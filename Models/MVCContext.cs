@@ -76,6 +76,8 @@ namespace MVCWebApp.Models
 
                 entity.Property(e => e.Price).HasColumnType("decimal(10, 2)");
 
+                entity.Property(e => e.ProductImage).IsUnicode(false);
+
                 entity.Property(e => e.ProductName)
                     .HasMaxLength(50)
                     .IsUnicode(false);

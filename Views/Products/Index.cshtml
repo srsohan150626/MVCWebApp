@@ -1,0 +1,51 @@
+﻿@model IEnumerable<MVCWebApp.Models.Product>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a class="btn btn-sm btn-primary" asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductImage)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+               @* @Html.DisplayFor(modelItem => item.ProductImage)*@
+                    @if (item.ProductImage != null)
+                    {
+                        <img src="@Url.Content($"~/images/{item.ProductImage}")" alt="@item.ProductName" width="100" height="100" />
+                    }
+            </td>
+            <td>
+                    <a class="btn btn-sm btn-info" asp-action="Edit" asp-route-id="@item.ProductId">Edit</a> |
+                    <a class="btn btn-sm btn-warning" asp-action="Details" asp-route-id="@item.ProductId">Details</a> |
+                    <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@item.ProductId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

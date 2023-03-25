@@ -17,7 +17,6 @@ namespace MVCWebApp.Controllers
 
         public IActionResult Index()
         {
-            var customers = _context.Customers.ToList();
             return View();
         }
 
